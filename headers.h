@@ -31,7 +31,6 @@
 #include "7.h"
 #include "8.h"
 #include "10_redirection.h"
-#include "11_pipe.h"
 #include "13_activities.h"
 #include "14_signals.h"
 #include "15_fgandbg.h"
