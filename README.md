@@ -50,12 +50,12 @@ A custom shell implementation in C that supports basic shell functionalities, cu
 - Handles errors for invalid paths or flags.
 
 - **Assumptions:**
-- It is assumed that no path name starts with a `-` symbol.
+    - It is assumed that no path name starts with a `-` symbol.
 
-- If `reveal -` is executed but there are no previous directories set, the shell will print:  
-  `ERROR: previous_directory not set`.
+    - If `reveal -` is executed but there are no previous directories set, the shell will print:  
+    `ERROR: previous_directory not set`.
 
-- If `reveal -l ; reveal -` is performed as the first input command, the `prev_dir` is not updated by the `reveal` command. The `prev_dir` is only updated by the `hop` command. As a result, the same error message `ERROR: previous_directory not set` will be printed for the `reveal -` command. This ensures that the `prev_dir` is managed exclusively by the `hop` command for consistency.
+    - If `reveal -l ; reveal -` is performed as the first input command, the `prev_dir` is not updated by the `reveal` command. The `prev_dir` is only updated by the `hop` command. As a result, the same error message `ERROR: previous_directory not set` will be printed for the `reveal -` command. This ensures that the `prev_dir` is managed exclusively by the `hop` command for consistency.
 
 
 #### LOG:
