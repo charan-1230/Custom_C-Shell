@@ -1,7 +1,7 @@
 #ifndef ACTIVITIES_H
 #define ACTIVITIES_H
 
-#include "6.h"
+#include "execute_commands.h"
 
 #define PROC_DIR "/proc"
 

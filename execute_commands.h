@@ -2,7 +2,6 @@
 #define EXECUTE_H
 
 #define MAX_BG_PROCESSES 4096
-#define PATH_MAX 4096
 
 // Struct to store process information
 typedef struct {

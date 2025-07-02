@@ -1,6 +1,10 @@
 #ifndef HEADERS_H
 #define HEADERS_H
 
+#define PATH_MAX 4096
+#define PORT 80
+#define BUFFER_SIZE 4096
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
@@ -22,23 +26,27 @@
 #include <math.h>
 #include <grp.h>
 #include <arpa/inet.h>
-
-#include "1.h"
-#include "3.h"
-#include "4.h"
-#include "5.h"
-#include "6.h"
-#include "7.h"
-#include "8.h"
-#include "10_redirection.h"
-#include "13_activities.h"
-#include "14_signals.h"
-#include "15_fgandbg.h"
-#include "16_neonate.h"
-#include "17_man.h"
+#include <netinet/in.h> 
+#include <netdb.h>        // for gethostbyname
+#include <sys/socket.h>   
 
 
-#define PATH_MAX 4096
+#include "prompt_display.h"
+#include "hop.h"
+#include "reveal.h"
+#include "log.h"
+#include "execute_commands.h"
+#include "proclore.h"
+#include "seek.h"
+#include "redirection.h"
+#include "activities.h"
+#include "signals.h"
+#include "fg_and_bg.h"
+#include "neonate.h"
+#include "man.h"
+
+
+
 #define GREEN "\x1b[32m"
 #define BLUE "\x1b[34m"
 #define RED "\x1b[31m"

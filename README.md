@@ -218,18 +218,18 @@ make clean
 
 - `headers.h`: Includes all header files, standard C headers, and macros.
 - `main.c`: Handles input tokenization, global variables, and function calls for different features.
-- `1.h` and `1.c`: Display the shell prompt.
-- `3.h` and `3.c`: Implements the `hop` command.
-- `4.h` and `4.c`: Implements the `reveal` command.
-- `5.h` and `5.c`: Implements the `log` command.
-- `6.h` and `6.c`: Handles foreground and background process execution.
-- `7.h` and `7.c`: Implements the `proclore` command.
-- `8.h` and `8.c`: Implements the `seek` command.
-- `10_redirection.h`, `10_redirection.c`, and `10_redirection_tokenise.c`: Handles I/O redirection.
-- `13_activities.h` and `13_activities.c`: Implements the `activities` command.
-- `14_signals.h` and `14_signals.c`: Handles signal management.
-- `15_fgandbg.h` and `15_fgandbg.c`: Implements `fg` and `bg` commands.
-- `16_neonate.h` and `16_neonate.c`: Implements the `neonate` command.
-- `17_man.h` and `17_man.c`: Implements the `iMan` command.
+- `prompt_display.h` and `prompt_display.c`: Display the shell prompt.
+- `hop.h` and `hop.c`: Implements the `hop` command.
+- `reveal.h` and `reveal.c`: Implements the `reveal` command.
+- `log.h` and `log.c`: Implements the `log` command.
+- `execute_commands.h` and `execute_commands.c`: Handles foreground and background process execution.
+- `proclore.h` and `proclore.c`: Implements the `proclore` command.
+- `seek.h` and `seek.c`: Implements the `seek` command.
+- `redirection.h`, `redirection.c`, and `redirection_tokenise.c`: Handles I/O redirection.
+- `activities.h` and `activities.c`: Implements the `activities` command.
+- `signals.h` and `signals.c`: Handles signal management.
+- `fg_and_bg.h` and `fg_and_bg.c`: Implements `fg` and `bg` commands.
+- `neonate.h` and `neonate.c`: Implements the `neonate` command.
+- `man.h` and `man.c`: Implements the `iMan` command.
 
 ---
