@@ -1,0 +1,14 @@
+echo hello world | wc
+cat < b.txt | wc | cat > a.txt
+echo | wc
+echo > a.txt
+clear
+ls -l | grep \"Jan\" | wc -l
+reveal -l | grep \"Jan\" | wc -l
+clear
+cat < a.txt | wc 
+clear
+ cat < a.txt | wc &
+clear
+iMan sleep
+clear

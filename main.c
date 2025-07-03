@@ -160,24 +160,39 @@ int main()
                 }
                 else if ((sum_redirec == 0) && (cnt_pipe > 0))
                 {
-                    // if (back_ground_no > 0)
-                    // {
-                    //     back_ground_no--;
-                    //     printf(YELLOW);
-                    //     printf("Not implemented pipes in bg\n");
-                    //     printf(RESET);
-                    // }
-                    // else
-                    // {
-                    //     if (!tokenise_and_execute_pipe(token_ampersand, &flag_log, home_dir, prev_dir))
-                    //     {
-                    //         token_ampersand = strtok_r(NULL, "&", &saveptr_ampersand);
-                    //         continue;
-                    //     }
-                    // }
+                    if (back_ground_no > 0)
+                    {
+                        back_ground_no--;
+                        printf(YELLOW);
+                        printf("Background execution with pipes not supported\n");
+                        printf(RESET);
+                    }
+                    else
+                    {
+                        if (!tokenise_and_execute_pipe(token_ampersand, &flag_log, home_dir, prev_dir))
+                        {
+                            token_ampersand = strtok_r(NULL, "&", &saveptr_ampersand);
+                            continue;
+                        }
+                    }
                 }
                 else if ((sum_redirec > 0) && (cnt_pipe > 0))
                 {
+                    if (back_ground_no > 0)
+                    {
+                        back_ground_no--;
+                        printf(YELLOW);
+                        printf("Background execution with pipes and redirection not supported\n");
+                        printf(RESET);
+                    }
+                    else
+                    {
+                        if (!tokenise_and_execute_pipe(token_ampersand, &flag_log, home_dir, prev_dir))
+                        {
+                            token_ampersand = strtok_r(NULL, "&", &saveptr_ampersand);
+                            continue;
+                        }
+                    }
                 }
                 else if ((sum_redirec == 0) && (cnt_pipe == 0))
                 {

@@ -11,7 +11,9 @@ A custom shell implementation in C that supports basic shell functionalities, cu
 
 - Erroneous commands will print `Error :<user_prompt> is not a valid command`.
 
-- Precedence order for operators: `;` > `&`.
+- The operator precedence is: **`;` > `&` > `|`**
+
+---
 
 ## Features
 
@@ -130,14 +132,58 @@ A custom shell implementation in C that supports basic shell functionalities, cu
 
 - Handles combined input and output redirection (`<` and `>`).
 
-
-
 - **Assumptions:**
     - Redirected errors are printed to the specified file.
 
     - It is assumed that I/O redirection is used only at the end of the command and all its parameters. If a command like `echo i>newfile.txt text` is given as input, the shell will process the redirection up to the point where it encounters the redirection operator (`>` in this case). As a result, `i` will be written to `newfile.txt`, and the remaining parameters (`text`) will be ignored. This ensures consistent and predictable behavior for I/O redirection.
 
+#### PIPES:
+- Pipes are used to pass information between commands, taking the output from the command on the left and passing it as standard input to the command on the right.
 
+- The shell supports any number of pipes in a single command line.
+
+- Commands are executed sequentially from left to right when pipes are present.
+
+- Supports both built-in commands (hop, reveal, proclore, etc.) and external system commands in pipe chains.
+
+- **Syntax:**
+  - `command1 | command2`: Passes output of command1 as input to command2
+  - `command1 | command2 | command3`: Supports multiple pipes in sequence
+
+- **Assumptions:**
+  - The shell supports up to **20 pipes** in a single command chain.
+  - Background execution with pipes is **not supported**. If attempted, the shell prints: `Background execution with pipes not supported`.
+  - Pipes have lower precedence than the `&` operator but higher than the `;` operator.
+  - Invalid pipe usage (pipes at the beginning/end of command or consecutive pipes) results in the error: `Error: Invalid use of pipe`.
+  - Empty commands between pipes are not allowed and will result in an error.
+  - All processes in a pipe chain are executed as foreground processes and the shell waits for all of them to complete.
+  - Built-in commands like `hop`, `reveal`, `proclore`, etc., work within pipe chains but their output behavior may differ from standalone execution.
+
+#### REDIRECTION ALONG WITH PIPES:
+- The shell supports combining I/O redirection with pipes, allowing complex command chains with file input/output.
+
+- Input redirection (`<`) can be used with the **first command** in a pipe chain.
+
+- Output redirection (`>` and `>>`) can be used with the **last command** in a pipe chain.
+
+- Multiple inputs and outputs from I/O redirection are **not supported** within pipe chains.
+
+- **Syntax:**
+  - `command < input_file | command2`: Input redirection with first command
+  - `command1 | command2 > output_file`: Output redirection with last command  
+  - `command1 | command2 >> output_file`: Append redirection with last command
+  - `command < input_file | command2 | command3 > output_file`: Combined input and output redirection
+
+- **Assumptions:**
+  - Input redirection (`<`) is **only allowed on the first command** in a pipe chain. If used elsewhere, the behavior is undefined.
+  - Output redirection (`>` or `>>`) is **only allowed on the last command** in a pipe chain. If used elsewhere, the behavior is undefined.
+  - **Multiple input or output redirections** within a single pipe chain are not supported (e.g., `cmd1 < file1 | cmd2 < file2` is invalid).
+  - The redirection operators within pipe chains follow the same syntax and error handling as standalone redirection commands.
+  - File permissions and accessibility are checked at runtime, and appropriate error messages are displayed if files cannot be opened.
+  - Background execution with pipes and redirection is **not supported**. If attempted, the shell prints: `Background execution with pipes and redirection not supported`.
+  - Redirection parsing within pipe chains handles whitespace around operators and filenames appropriately.
+  - Error handling for redirection within pipes includes checking for missing filenames after redirection operators.
+  - The shell creates necessary output files with permissions `0644` (readable/writable by owner, readable by group and others).
 
 #### ACTIVITIES:
 - Lists all background processes spawned by the shell.
@@ -231,5 +277,6 @@ make clean
 - `fg_and_bg.h` and `fg_and_bg.c`: Implements `fg` and `bg` commands.
 - `neonate.h` and `neonate.c`: Implements the `neonate` command.
 - `man.h` and `man.c`: Implements the `iMan` command.
+- `pipes.h` and `pipes.c`: Implements pipe functionality and redirection with pipes.
 
 ---

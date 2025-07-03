@@ -44,6 +44,7 @@
 #include "fg_and_bg.h"
 #include "neonate.h"
 #include "man.h"
+#include "pipes.h"
 
 
 

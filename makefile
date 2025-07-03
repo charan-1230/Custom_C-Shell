@@ -3,7 +3,7 @@ CC = gcc
 
 LDFLAGS = -lm
 
-SRCS = main.c prompt_display.c hop.c reveal.c log.c execute_commands.c proclore.c seek.c redirection_tokenise.c redirection.c activities.c signals.c fg_and_bg.c neonate.c man.c
+SRCS = main.c prompt_display.c hop.c reveal.c log.c execute_commands.c proclore.c seek.c redirection_tokenise.c redirection.c activities.c signals.c fg_and_bg.c neonate.c man.c pipes.c
 
 TARGET = myshell
 
